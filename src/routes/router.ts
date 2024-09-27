@@ -1,7 +1,13 @@
 import { Router } from "express";
-const { createBlog, deleteBlog } = require("../controllers/blog.controller");
+const {
+  getAll,
+  createBlog,
+  deleteBlog,
+} = require("../controllers/blog.controller");
 
 const router = Router();
+
+router.get("/getall", getAll);
 
 router.post("/create", createBlog);
 
