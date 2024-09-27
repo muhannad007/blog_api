@@ -32,6 +32,7 @@ const deleteBlog = async (req: Request, res: Response) => {
 };
 
 module.exports = {
+  getAll,
   createBlog,
   deleteBlog,
 };
