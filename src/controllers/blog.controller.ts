@@ -20,6 +20,21 @@ const createBlog = async (req: Request, res: Response) => {
   }
 };
 
+const updateBlog = (req: Request, res: Response) => {
+  const id = req.params.id;
+  const update = req.body;
+  const updated = Blog.findOneAndUpdate(
+    { _id: id },
+    { $set: { body: update.body } },
+    { new: true }
+  );
+
+  if (!updated) {
+    res.status(404).json({ error: "No such blog" });
+  }
+  res.status(200).json(updated);
+};
+
 const deleteBlog = async (req: Request, res: Response) => {
   const id = req.params.id;
   const blog = await Blog.findOneAndDelete({ _id: id });
@@ -34,5 +49,6 @@ const deleteBlog = async (req: Request, res: Response) => {
 module.exports = {
   getAll,
   createBlog,
+  updateBlog,
   deleteBlog,
 };
