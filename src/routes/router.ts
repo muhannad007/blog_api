@@ -11,6 +11,6 @@ router.get("/getall", getAll);
 
 router.post("/create", createBlog);
 
-router.delete("/delete", deleteBlog);
+router.delete("/delete/:id", deleteBlog);
 
 module.exports = router;
